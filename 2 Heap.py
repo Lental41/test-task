@@ -9,8 +9,8 @@ import random
 import time
 
 def min_heap(array, n, i):
-    min = i # определяем индекс текущего родителя, как индекс наименьшего числа
-    left_child = 2 * i + 1 # вычисляем индекс левого ребенка
+    min = i                 # определяем индекс текущего родителя, как индекс наименьшего числа
+    left_child = 2 * i + 1  # вычисляем индекс левого ребенка
     right_child = 2 * i + 2 # вычисляем индекс правого ребенка
     if left_child < n and array[left_child] < array[min]:
         min = left_child
