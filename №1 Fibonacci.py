@@ -9,13 +9,10 @@
 a = 1
 b = 0
 n = int(input())
-if n>0 and n<35:
+if n > 0 and n < 35:
     for i in range(n-1):
-        if n == 1:
-            break
-        else:
-            b=a+b #b - n-e число Фибоначчи
-            a=b-a #a - n-1 число Фибоначчи
+        b = a + b # b - i-e число Фибоначчи
+        a = b - a # a - i-1 число Фибоначчи
     print(n, '\b-е число Фибоначчи:', b)
     print('Последняя цифра:', b%10)
 else:
