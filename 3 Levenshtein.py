@@ -7,13 +7,13 @@
 '''
 
 def levenshtein_distance(str1: str, str2: str):
-    matrix = [[0] * (len(str2) + 1) for k in range(len(str1) + 1)] # Создаем и заполняем матрицу для алгоритма Вагнера — Фишера
+    matrix = [[0] * (len(str2) + 1) for k in range(len(str1) + 1)] # создаем и заполняем матрицу для алгоритма Вагнера — Фишера
     for i in range(len(str1) + 1):
         matrix[i][0] = i
     for j in range(len(str2) + 1):
         matrix[0][j] = j
 
-    for i in range(1, len(str1) + 1): # Вычисляем минимальное количество операций для каждой пары символов
+    for i in range(1, len(str1) + 1): # вычисляем минимальное количество операций для каждой пары символов
         for j in range(1, len(str2) + 1):
             if str1[i - 1] == str2[j - 1]:
                 count = 0
@@ -24,7 +24,8 @@ def levenshtein_distance(str1: str, str2: str):
                 matrix[i][j - 1] + 1,        # вставка
                 matrix[i - 1][j - 1] + count # замена
             )
-    return matrix[len(str1)][len(str2)] # Результат находится в правом нижнем углу матрицы
+    return matrix[len(str1)][len(str2)] # результат находится в правом нижнем углу матрицы
+
 
 str1 = input()
 str2 = input()

@@ -26,6 +26,8 @@ def make_heap(array):
         min_heap(array, n, i)
     return array
 
+
+# сравнение скорости работы созданной функции с heap.heapify
 arr = random.sample(range(1, 1000000), 100000)  # создаем массив из 100 000 случайных чисел
 
 start_time = time.time() # измерение времени работы собственной реализации
