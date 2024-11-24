@@ -13,16 +13,16 @@
 import os
 
 def analyze(directory):
-    lines_count = 0
-    comments_count = 0
-    imports_count = 0
-    for root, _, files in os.walk(directory):
+    lines_count = 0    # счетчик строк кода
+    comments_count = 0 # счетчик строк с комментариями(считаются как строки только с комментариями, так и строки, содержащие комментарий вместе с кодом. многострочные комментарии через ''' ''' не включены в подсчет, т.к. по сути своей являются строкой, а не комментарием)
+    imports_count = 0  # счетчик обращений к команде import
+    for root, _, files in os.walk(directory): # обход файлов в директории(подкаталоги нам не нужны, поэтому вместо переменной используем _)
         for file in files:
             if file.endswith(".py"):
-                file_path = os.path.join(root, file)
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    lines = f.readlines()
-                lines_count += len(lines)
+                file_path = os.path.join(root, file) # получение пути к файлу
+                with open(file_path, 'r', encoding='utf-8') as f: # открытие файла в режиме чтения
+                    lines = f.readlines() # запись всех строк файла как элементы списка
+                lines_count += len(lines) # увеличение счетчика на значение длины списка
                 for line in lines:
                         if "#" in line:
                             comments_count += 1
@@ -31,5 +31,3 @@ def analyze(directory):
     print('Строк кода:', lines_count)
     print('Строк с комментариями:', comments_count)
     print('Количество обращений к import:', imports_count)
-
-analyze(r'C:\Users\Pavel\Documents\000\code\test task')
